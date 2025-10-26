@@ -1,18 +1,40 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import * as React from "react";
 
-export default function HomePage() {
+// Importar los nuevos widgets que crearemos a continuación
+import { WidgetAssistantsList } from "@/components/widgets/WidgetAssistantsList";
+import { WidgetClientsSummary } from "@/components/widgets/WidgetClientsSummary";
+import { WidgetClientsActivity } from "@/components/widgets/WidgetClientsActivity";
+import { WidgetActions } from "@/components/widgets/WidgetActions";
+
+export default function CoachDashboardPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold mb-8">
-        ¡Login Exitoso! Bienvenido a la Home.
-      </h1>
-      <p className="mb-4">
-        Esta es la página principal (protegida).
-      </p>
-      <Button asChild variant="outline">
-        <Link href="/">Volver al Login</Link>
-      </Button>
-    </main>
+    <div className="space-y-6">
+      {/* Este es el grid principal del dashboard.
+        - 3 columnas en total (col-span-3)
+        - La columna de la izquierda (Asistentes) ocupa 2 tercios (col-span-2)
+        - La columna de la derecha (Acciones) ocupa 1 tercio (col-span-1)
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        {/* --- COLUMNA IZQUIERDA (2/3) --- */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Widget de Lista de Asistentes */}
+          <WidgetAssistantsList />
+
+          {/* Widget de Resumen de Clientes (Gráficos circulares) */}
+          <WidgetClientsSummary />
+          
+          {/* Widget de Actividad de Clientes (Gráfico de barras) */}
+          <WidgetClientsActivity />
+        </div>
+
+        {/* --- COLUMNA DERECHA (1/3) --- */}
+        <div className="lg:col-span-1 space-y-6">
+          {/* Widget de Acciones Rápidas (4 botones) */}
+          <WidgetActions />
+        </div>
+
+      </div>
+    </div>
   );
 }

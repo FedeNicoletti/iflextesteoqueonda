@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -78,40 +77,125 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* ====================================================== */
+/* VARIABLES CSS DERIVADAS DE TU CONFIG          */
+/* ====================================================== */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
+  /* --- Variables Mapeadas --- */
+  --iflex-error: #E50000;
+
+  /* Primary Colors (Dark Values) */
+  --iflex-primary-base: #00A9C4; /* Tu "primary.dark" */
+  --iflex-primary-1: #008DA4;
+  --iflex-primary-2: #007183;
+  /* Ojo: #6DDEFO tiene una 'O' al final, asumo que es un typo y debería ser '0' */
+  --iflex-primary-3: #6DDEF0; /* Si era #6DDEFO, cámbialo aquí */
+  --iflex-primary-4: #003841;
+  --iflex-primary-5: #001C21;
+
+  /* Secondary Colors (Dark Values) */
+  --iflex-secondary-base: #D07C1B; /* Tu "secondary.dark" */
+  --iflex-secondary-1: #C07219;
+  --iflex-secondary-2: #905613;
+  --iflex-secondary-3: #603900;
+  --iflex-secondary-4: #301D06;
+  --iflex-secondary-5: #100A02;
+
+  /* Background Colors (Dark Values) */
+  --iflex-background-base: #141414; /* Tu "background.dark" */
+  --iflex-background-overlay: #0A0A0A;
+  --iflex-background-page: #1D1E1F;
+
+  /* Info Colors (Dark Values where applicable) */
+  --iflex-info-base: #909399; /* Valor base directo */
+  --iflex-info: #73767A;      /* Tu "info-color.dark" */
+  --iflex-info-1: #6B6D71;
+  --iflex-info-2: #525457;
+  --iflex-info-3: #393A3C;
+  --iflex-info-4: #2D2D2F;
+  --iflex-info-5: #202121;
+
+  /* Text Colors (Dark Values) */
+  --iflex-text-primary: #E5EAF3;
+  --iflex-text-regular: #CDD3DC;
+  --iflex-text-secondary: #A3A6AD;
+  --iflex-text-placeholder: #8D9095;
+  --iflex-text-disabled: #6C6E72;
+
+  /* Fill Colors (Dark Values) */
+  --iflex-fill-base: #303030; /* Tu "color-fill.dark" */
+  --iflex-fill-darker: #424243;
+  --iflex-fill-dark: #39393A;
+  --iflex-fill-lighter: #1D1D1D;
+  --iflex-fill-light: #262727;
+  --iflex-fill-extra-light: #191919;
+  --iflex-fill-blank: #000000; /* Tu "color-fill-blank.dark" */
+
+  /* Mask Colors (Dark Values) */
+  --iflex-mask-base: #000000CC; /* Tu "mask-color.dark" */
+  --iflex-mask-extralight: #0000004D;
+
+  /* Border Colors (Dark Values) */
+  --iflex-border-base: #4C4D4F; /* Tu "border-color.dark" */
+  --iflex-border-darker: #636466;
+  --iflex-border-dark: #58585B;
+  --iflex-border-lighter: #363637;
+  --iflex-border-light: #414243;
+  --iflex-border-extra-light: #2B2B2C;
+
+  /* Overlay Colors */
+  --iflex-overlay-base: #000000CC; /* Tu "overlay-color" */
+  --iflex-overlay-light: #00000099;
+  --iflex-overlay-lighter: #00000066;
+
+  /* --- Variables shadcn mapeadas a tus colores iflex --- */
+  /* (Estas son las que usan los componentes shadcn) */
+  --background: var(--iflex-background-base);
+  --foreground: var(--iflex-text-primary);
+
+  --card: var(--iflex-fill-light); /* Usando fill-light como fondo de card */
+  --card-foreground: var(--iflex-text-primary);
+
+  --popover: var(--iflex-fill-light);
+  --popover-foreground: var(--iflex-text-primary);
+
+  --primary: var(--iflex-primary-base);
+  --primary-foreground: var(--iflex-background-base); /* Texto oscuro sobre cyan */
+
+  --secondary: var(--iflex-secondary-base);
+  --secondary-foreground: var(--iflex-background-base); /* Texto oscuro sobre naranja */
+
+  --muted: var(--iflex-fill-dark); /* Fondo grisáceo */
+  --muted-foreground: var(--iflex-text-secondary); /* Texto gris claro */
+
+  --accent: var(--iflex-fill-base); /* Fondo hover/activo sutil */
+  --accent-foreground: var(--iflex-text-primary);
+
+  --destructive: var(--iflex-error);
+  --destructive-foreground: var(--iflex-text-primary);
+
+  --border: var(--iflex-border-light); /* Borde principal */
+  --input: var(--iflex-fill-base);   /* Fondo input */
+  --ring: var(--iflex-primary-base); /* Color focus */
+
+  /* Colores para GRÁFICOS (Mapeados a variables iflex si existen, sino directos) */
+  --chart-1: #2DD3EE; /* Cyan brillante específico del diseño */
+  --chart-2: #F59E0B; /* Naranja específico del diseño */
+  --chart-3: #6B7280; /* Gris específico del diseño */
+  /* Chart 4 y 5 (Usa valores oklch si no tienes mapeo iflex) */
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
 
+  /* Colores específicos del Sidebar (Mapeados a variables iflex) */
+  --sidebar: var(--iflex-background-overlay); /* Fondo más oscuro */
+  --sidebar-foreground: var(--iflex-text-primary);
+  --sidebar-primary: var(--iflex-primary-base); /* Cyan */
+  --sidebar-primary-foreground: var(--iflex-background-base);
+  --sidebar-accent: var(--iflex-fill-base); /* Fondo hover */
+  --sidebar-accent-foreground: var(--iflex-text-primary);
+  --sidebar-border: var(--iflex-border-extra-light); /* Borde más oscuro */
+  --sidebar-ring: var(--iflex-primary-base);
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

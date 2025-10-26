@@ -147,6 +147,7 @@ export function CoachCertificatesModal({ open, setOpen }: ModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-2xl p-8">
+        <DialogTitle className="sr-only">Upload your Certificates</DialogTitle>
         {renderView()}
       </DialogContent>
     </Dialog>
